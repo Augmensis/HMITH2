@@ -13,13 +13,17 @@ end
 module Listing
 
   def self.random_for(user)
-    guessed = user.guesses.pluck(:listing_id)
-    sales = []
-    api.houses.in(postcode: 'NW1 0DU').within(50).order_by(:age).each do |item|
-      sales << item unless guessed.member?(item.listing_id)
-      break if (0 == sales.size % 10) && sales.size > 1
+    if api != false
+      guessed = user.guesses.pluck(:listing_id)
+      sales = []
+      api.houses.in(postcode: 'WR2 4JH').within(50).order_by(:age).each do |item|
+        sales << item unless guessed.member?(item.listing_id)
+        break if (0 == sales.size % 10) && sales.size > 1
+      end
+      sales.shuffle.first
+    else
+      false
     end
-    sales.shuffle.first
   end
 
   def self.by_id(listing_id)
@@ -29,6 +33,11 @@ module Listing
   end
 
   def self.api
-    Zoopla::Listings::Sales.new(ENV['ZOOPLA_KEY'])
+    data = Zoopla::Listings::Sales.new(ENV['ZOOPLA_KEY'])
+    if data.to_s.include? "<h1>Developer Over Rate</h1>"
+      data = false
+    else
+      data
+    end 
   end
 end

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title><%= t('title') %> | <%= yield(:title) %></title>
+  <title><%= t('title') %> | <%= yield(:title) %>
+  </title>
   <%= stylesheet_link_tag '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', :media => 'all' %>
   <%= stylesheet_link_tag 'application', :media => 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js' %>
@@ -28,12 +29,12 @@
       </div>
     </nav>
     <% flash.each do |name, msg| -%>
-      <div class="alert alert-<%= name == :notice ? 'success' : 'error' %> alert-dismissable">
+      <div class="alert alert-<%= msg == 'Well Done! You got it right!' ? 'success' : 'warning' %> alert-dismissable">
         <a class="close" data-dismiss="alert">x</a>
         <%= msg %>
       </div>
     <% end -%>
-    <div id="main_area" role="main">
+          <div id="main_area" role="main" style="text-align:center">
       <% if show_title? -%>
         <h1><%= yield(:title) %></h1>
       <% end -%>
@@ -41,7 +42,7 @@
         <%= yield %>
       </article>
     </div>
-    <footer>
+    <footer style="text-align:center">
       <a href="http://www.zoopla.co.uk/"><img src="http://www.zoopla.co.uk/static/images/mashery/powered-by-zoopla.png" width="111" height="54" title="Property information powered by Zoopla" alt="Property information powered by Zoopla" border="0" /></a>
       &copy; <%= Date.today.year %> <%= t('title') %>
     </footer>
