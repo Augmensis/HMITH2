@@ -23,3 +23,6 @@ public/system/*
 *.pid
 .DS_Store
 *.tmproj
+
+# Ignore application configuration
+/config/application.yml
