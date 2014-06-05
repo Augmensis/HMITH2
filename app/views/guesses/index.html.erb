@@ -5,11 +5,21 @@
     Number of guesses: <%= @guesses.size %><br />
     Successful guesses: <%= @guesses.select(&:successful).size %>
   </div>
-  <ul class="list-unstyled">
+  <table>
+    <th>Property Id</th><th>Price</th><th>Your got it...</th><th>Date</th>
     <% @guesses.each do |guess| -%>
-      <li><%= link_to guess.listing_id, "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></li>
+      <tr>
+        <td><%= link_to guess.listing_id, "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
+        <td><%= link_to "TODO: Add Prices", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
+        <% if guess.successful == true %>
+          <td><%= link_to "Right", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
+        <% else %>
+          <td><%= link_to "Wrong", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
+        <% end %>
+        <td><%= link_to guess.created_at.strftime("%d/%b/%Y"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
+      </tr>
     <% end -%>
-  </ul>
+  </table>
 <% else  -%>
   <p>You have no viewed listings.</p>
 <% end -%>

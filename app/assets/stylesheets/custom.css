@@ -2,7 +2,7 @@ header a, header a:hover {
   text-decoration:none;
 }
 body {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 nav {
   text-align:center;
@@ -41,4 +41,10 @@ h1 {
 }
 #guess a {
   text-align: center;
+}
+table th {
+  text-align:center;
+}
+table td{
+  text-align:center;
 }
