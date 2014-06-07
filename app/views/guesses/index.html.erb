@@ -17,7 +17,7 @@
           <td><%= link_to "Wrong", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
         <% end -%>
         <td><%= link_to guess.created_at.strftime("%d/%b/%Y"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
-        <td><%= image_tag(guess.image_url, :alt => "Missing Image") %></td>
+<td><%= image_tag(guess.image_url, :alt => "No photos for this house :(") %></td>
       </tr>
     <% end -%>
   </table>
