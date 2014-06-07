@@ -6,17 +6,18 @@
     Successful guesses: <%= @guesses.select(&:successful).size %>
   </div>
   <table>
-    <th>Property Id</th><th>Price</th><th>Your got it...</th><th>Date</th>
+    <th>Property Id</th><th>Actual Price</th><th>Your got it...</th><th>Date</th><th>Image</th>
     <% @guesses.each do |guess| -%>
       <tr>
         <td><%= link_to guess.listing_id, "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
-        <td><%= link_to "TODO: Add Prices", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
+<td><%= link_to number_to_currency(guess.listing_price, precision: 0, unit: "£"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
         <% if guess.successful == true %>
           <td><%= link_to "Right", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
-        <% else %>
+        <% else -%>
           <td><%= link_to "Wrong", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
-        <% end %>
+        <% end -%>
         <td><%= link_to guess.created_at.strftime("%d/%b/%Y"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
+        <td><%= image_tag(guess.image_url, :alt => "Missing Image") %></td>
       </tr>
     <% end -%>
   </table>

@@ -13,10 +13,11 @@ end
 module Listing
 
   def self.random_for(user)
-    if api != false
+    data = api.houses.in(postcode: 'WR2 4JH').within(50).order_by(:age)
+    if data.to_s.exclude? '<h1>Developer Over Rate</h1>'
       guessed = user.guesses.pluck(:listing_id)
       sales = []
-      api.houses.in(postcode: 'WR2 4JH').within(50).order_by(:age).each do |item|
+      data.each do |item|
         sales << item unless guessed.member?(item.listing_id)
         break if (0 == sales.size % 10) && sales.size > 1
       end
@@ -34,10 +35,5 @@ module Listing
 
   def self.api
     data = Zoopla::Listings::Sales.new(ENV['ZOOPLA_KEY'])
-    if data.to_s.include? "<h1>Developer Over Rate</h1>"
-      data = false
-    else
-      data
-    end 
   end
 end
