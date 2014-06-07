@@ -2,7 +2,7 @@ header a, header a:hover {
   text-decoration:none;
 }
 body {
-  padding-top: 20px;
+  padding-top: 0.5em;
 }
 nav {
   text-align:center;
@@ -18,11 +18,13 @@ nav li {
   display:inline;
   padding-right: 0.5em;
 }
+
 #main_area {
-  padding: 1em;
+  padding: 0.5em;
+  margin-top: -0.75em;
   background-color: #cdf;
-  border-radius: 1em;
-  -moz-border-radius: 1em;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
   min-height: 20em;
 }
 footer {
@@ -41,6 +43,9 @@ h1 {
 }
 #guess a {
   text-align: center;
+}
+table {
+  margin-top: 0.5em;
 }
 table th {
   text-align:center;

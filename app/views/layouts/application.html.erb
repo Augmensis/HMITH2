@@ -16,17 +16,24 @@
 <body>
   <section class="container">
     <nav class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <ul class="nav navbar-nav">
+      <div class="container-fluid">
           <% if current_user -%>
+          <ul class="nav navbar-nav">
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'Listings', guesses_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user.admin %>
+              <li><%= link_to 'Admin', admin_path %></li>
+            <% end -%>
             <li><%= link_to 'Sign out', session_path, method: :delete %></li>
+          </ul>
           <% else -%>
+          <ul class="nav navbar-nav">
             <li><%= link_to 'Sign Up', sign_up_path %></li>
             <li><%= link_to 'Sign In', new_session_path %></li>
+          </ul>
           <% end -%>
-        </ul>
       </div>
     </nav>
     <% flash.each do |name, msg| -%>

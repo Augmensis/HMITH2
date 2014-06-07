@@ -1,6 +1,6 @@
 <% title 'How Much Is That House?' %>
   
-<%= image_tag @listing.image_url %>
+<%= image_tag @listing.image_url, alt: "No photos have been uploaded for this house :("  %>
 
 <div id="guess">
   <%= render @guesses %>
