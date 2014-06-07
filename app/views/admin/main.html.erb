@@ -11,7 +11,7 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.guesses.size %></td>
-        <td><%= user.guesses.select(&:successful).size %></td>
+        <td><%= user.guesses.select(:successful).size %></td>
         <td><%= user.guesses.last.created_at %></td>
       </tr>
     <% end -%>
