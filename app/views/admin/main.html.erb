@@ -6,13 +6,13 @@
     Number of games played: <%= @guesses.size %>
   </div>
   <table>
-    <th>User Email</th><th>Games Played</th><th>Correct Guesses</th><th>Last Game Played</th>
+    <th>User Email</th><th>Games Played</th><th>Correct Guesses</th><!--<th>Last Game Played</th>-->
     <% @users.each do |user| -%>
       <tr>
         <td><%= user.email %></td>
         <td><%= user.guesses.size %></td>
         <td><%= user.guesses.select(:successful).size %></td>
-        <td><%= user.guesses.last.created_at %></td>
+        <!-- <td><%= user.guesses.last.created_at %></td> -->
       </tr>
     <% end -%>
   </table>
