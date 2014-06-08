@@ -12,7 +12,7 @@
         <td><%= user.email %></td>
         <td><%= user.guesses.size %></td>
         <td><%= user.guesses.where(:successful => true).size %></td>
-        <td><%= user.guesses.last.created_at %></td>
+        <td> user.guesses.last.created_at</td>
       </tr>
     <% end -%>
   </table>
