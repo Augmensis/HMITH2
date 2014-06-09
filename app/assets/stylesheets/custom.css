@@ -56,3 +56,13 @@ table td{
 .alert {
   margin-top: -0.75em;
 }
+.thumbnail{
+  margin-left: 0;
+  margin-right: 0;
+  text-align:center;
+}
+.thumbnail a img{
+  width:95%; 
+  max-height:255px;
+  padding-top: 0.5em;
+}

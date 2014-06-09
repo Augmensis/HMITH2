@@ -5,22 +5,21 @@
     Number of guesses: <%= @guesses.size %><br />
     Successful guesses: <%= @guesses.select(&:successful).size %>
   </div>
-  <table>
-    <th>Property Id</th><th>Actual Price</th><th>Your got it...</th><th>Date</th><th>Image</th>
+
     <% @guesses.each do |guess| -%>
-      <tr>
-        <td><%= link_to guess.listing_id, "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
-<td><%= link_to number_to_currency(guess.listing_price, precision: 0, unit: "£"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
-        <% if guess.successful == true %>
-          <td><%= link_to "Right", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
+        <div class="thumbnail col-sm-6 col-md-4">
+        <%= link_to image_tag(guess.image_url, :alt => "No photos for this house :("),"http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %>
+        <h3><%= link_to number_to_currency(guess.listing_price, precision: 0, unit: "£"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></h3>
+        <p><% if guess.successful == true %>
+          <%= link_to "You Guessed Right", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %>
         <% else -%>
-          <td><%= link_to "Wrong", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
-        <% end -%>
-        <td><%= link_to guess.created_at.strftime("%d/%b/%Y"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></td>
-<td><%= image_tag(guess.image_url, :alt => "No photos for this house :(") %></td>
-      </tr>
+          <%= link_to "You Guessed Wrong", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %>
+        <% end -%></p>
+          <p><%= link_to guess.created_at.strftime("%d/%b/%Y"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></p>
+        <p><%= link_to "Full Details", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}", class: "btn btn-primary" %></p>
+    </div>
     <% end -%>
-  </table>
+
 <% else  -%>
   <p>You have no viewed listings.</p>
 <% end -%>

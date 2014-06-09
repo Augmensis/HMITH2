@@ -32,7 +32,7 @@ class GuessesController < ApplicationController
   def fix
     if current_user.admin == true
       #fix stuff
-      Guess.all.each do |fix|
+      Guess.all.reverse.each do |fix|
         if listing = Listing.by_id(fix.listing_id)
           fix.listing_price = listing.price
           fix.image_url = listing.image_url
