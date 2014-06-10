@@ -33,7 +33,7 @@ class GuessesController < ApplicationController
     if current_user.admin == true
       #fix stuff
       Guess.all.reverse.each do |fix|
-        if fix.image_url.blank? || fix.image_url == ''
+        #if fix.image_url.blank? || fix.image_url == ''
           if listing = Listing.by_id(fix.listing_id)
             fix.listing_price = listing.price
             fix.image_url = listing.image_url
@@ -50,7 +50,7 @@ class GuessesController < ApplicationController
             end
             fix.save!
           end
-        end
+        #end
       end
       redirect_to root_url, notice: 'Guess data has now been updated'
     else
