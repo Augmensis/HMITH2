@@ -33,10 +33,23 @@ class GuessesController < ApplicationController
     if current_user.admin == true
       #fix stuff
       Guess.all.reverse.each do |fix|
-        if listing = Listing.by_id(fix.listing_id)
-          fix.listing_price = listing.price
-          fix.image_url = listing.image_url
-          fix.save!
+        if fix.image_url.blank? || fix.image_url == ''
+          if listing = Listing.by_id(fix.listing_id)
+            fix.listing_price = listing.price
+            fix.image_url = listing.image_url
+            fix.num_bathrooms = listing.num_bathrooms
+            fix.num_bedrooms = listing.num_bedrooms
+            fix.num_floors = listing.num_floors
+            fix.num_recepts = listing.num_recepts
+            fix.street_name = listing.street_name
+      
+            if listing.short_description.length == 0
+              fix.short_description = "None Provided"
+            else
+              fix.short_description = listing.short_description.truncate(250)
+            end
+            fix.save!
+          end
         end
       end
       redirect_to root_url, notice: 'Guess data has now been updated'

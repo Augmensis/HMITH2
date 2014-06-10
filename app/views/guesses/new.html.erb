@@ -1,8 +1,30 @@
 <% title 'How Much Is That House?' %>
-  
-<%= image_tag @listing.image_url, alt: "No photos have been uploaded for this house :("  %>
+<script>
+  var opts = {direction: 'lr', speed: '500ms'}
+  $(document).on("click",  ".thumbnail", function() {
+    $( this ).flip();
+  });
+</script>
 
-<div id="guess">
-  <%= render @guesses %>
-  <%= link_to 'View Details', "http://www.zoopla.co.uk/for-sale/details/#{@listing.listing_id}", class: 'btn btn-info', target: '_blank' %>
+<div class="thumbnail card-container dual col-md-6 col-lg-4">
+<div class="card">
+  <div class="front">
+    <%= image_tag @listing.image_url, alt: "No photos have been uploaded for this house :("  %>
+
+    <div id="guess">
+      <%= render @guesses %>
+      <%= link_to 'View Details', "http://www.zoopla.co.uk/for-sale/details/#{@listing.listing_id}", class: 'btn btn-info', target: '_blank' %>
+    </div>
+  </div>
+  <div class="back">
+              <p>Bedrooms: <%= @listing.num_bedrooms %></p>
+          <p>Bathrooms: <%= @listing.num_bathrooms %></p>
+          <p>Floors: <%= @listing.num_floors %></p>
+          <p>Receptions: <%= @listing.num_recepts %></p>
+          <p>Street: <%= @listing.street_name %></p>
+          <p>Short Description: <%= @listing.short_description %></p>
+
+  </div>
+    
+  </div>
 </div>

@@ -1,23 +1,51 @@
 <% title 'Viewed Listings' %>
 
+<script>
+  var opts = {direction: 'lr', speed: '500ms'}
+  $(document).on("click",  ".thumbnail", function() {
+    $( this ).flip();
+  });
+</script>
+
 <% unless @guesses.blank? -%>
   <div>
     Number of guesses: <%= @guesses.size %><br />
     Successful guesses: <%= @guesses.select(&:successful).size %>
+    <p class="test">This changes</p>
   </div>
 
+
     <% @guesses.each do |guess| -%>
-        <div class="thumbnail col-sm-6 col-md-4">
-        <%= link_to image_tag(guess.image_url, :alt => "No photos for this house :("),"http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %>
-        <h3><%= link_to number_to_currency(guess.listing_price, precision: 0, unit: "£"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></h3>
-        <p><% if guess.successful == true %>
-          <%= link_to "You Guessed Right", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %>
-        <% else -%>
-          <%= link_to "You Guessed Wrong", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %>
-        <% end -%></p>
+        <div class="card-container dual thumbnail col-sm-12 col-md-4 ">
+
+          <div class="card">
+          <div class="front">
+          <%= image_tag(guess.image_url, :alt => "No photos for this house :(") %>
+          <h3><%= link_to number_to_currency(guess.listing_price, precision: 0, unit: "£"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></h3>
+          <p>
+            <% if guess.successful == true %>
+              <%= link_to "You Guessed Right", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %>
+            <% else -%>
+              <%= link_to "You Guessed Wrong", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %>
+            <% end -%>
+          </p>
           <p><%= link_to guess.created_at.strftime("%d/%b/%Y"), "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}" %></p>
         <p><%= link_to "Full Details", "http://www.zoopla.co.uk/for-sale/details/#{guess.listing_id}", class: "btn btn-primary" %></p>
-    </div>
+        </div>
+        <div class="back">
+          <h3>Quick Facts</h3>
+          <p>Bedrooms: <%= guess.num_bedrooms %></p>
+          <p>Bathrooms: <%= guess.num_bathrooms %></p>
+          <p>Floors: <%= guess.num_floors %></p>
+          <p>Receptions: <%= guess.num_recepts %></p>
+          <p>Street: <%= guess.street_name %></p>
+          <p>Short Description: <%= guess.short_description %></p>
+
+        </div>
+
+</div>
+
+</div>
     <% end -%>
 
 <% else  -%>
