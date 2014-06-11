@@ -1,30 +1,34 @@
 <% title 'How Much Is That House?' %>
 <script>
-  var opts = {direction: 'lr', speed: '500ms'}
-  $(document).on("click",  ".thumbnail", function() {
-    $( this ).flip();
+  $(document).on("click", ".card-container", function(e){
+    e.stopImmediatePropagation();  
+    $(this).flip();
+  });
+  $(document).on("click", ".btn", function(e){
+    $(this).click();
   });
 </script>
 
-<div class="thumbnail card-container dual col-md-6 col-lg-4">
-<div class="card">
-  <div class="front">
-    <%= image_tag @listing.image_url, alt: "No photos have been uploaded for this house :("  %>
+<div class="card-container">
+  <div class="card">
+      <div class="front thumbnail col-md-6 col-lg-4">
+        <%= image_tag @listing.image_url, alt: "No photos have been uploaded for this house :("  %>
 
-    <div id="guess">
-      <%= render @guesses %>
-      <%= link_to 'View Details', "http://www.zoopla.co.uk/for-sale/details/#{@listing.listing_id}", class: 'btn btn-info', target: '_blank' %>
-    </div>
-  </div>
-  <div class="back">
-              <p>Bedrooms: <%= @listing.num_bedrooms %></p>
+          <div id="guess">
+          <%= render @guesses %>
+          <%= link_to 'View Details', "http://www.zoopla.co.uk/for-sale/details/#{@listing.listing_id}", class: 'btn btn-info', target: '_blank' %>
+          </div>
+      </div>
+      <div class="back thumbnail col-md-6 col-lg-4">
+          <h3>Quick Facts</h3>
+          <p>Bedrooms: <%= @listing.num_bedrooms %></p>
           <p>Bathrooms: <%= @listing.num_bathrooms %></p>
           <p>Floors: <%= @listing.num_floors %></p>
           <p>Receptions: <%= @listing.num_recepts %></p>
           <p>Street: <%= @listing.street_name %></p>
-          <p>Short Description: <%= @listing.short_description %></p>
-
-  </div>
-    
+          <div>
+            <p>Short Description:<br/></p><p class="normal"><%= @listing.short_description %></p>
+          </div>
+      </div>
   </div>
 </div>

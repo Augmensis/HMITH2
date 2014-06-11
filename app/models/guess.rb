@@ -18,7 +18,7 @@ class Guess < ActiveRecord::Base
       if listing.short_description.length == 0
         self.short_description = "None Provided"
       else
-        self.short_description = listing.short_description.truncate(250)
+        self.short_description = listing.short_description.truncate(150)
       end
       
       self.successful = true if listing.price == price.to_i

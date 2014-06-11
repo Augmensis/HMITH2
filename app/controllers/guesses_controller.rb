@@ -46,7 +46,7 @@ class GuessesController < ApplicationController
             if listing.short_description.length == 0
               fix.short_description = "None Provided"
             else
-              fix.short_description = listing.short_description.truncate(250)
+              fix.short_description = listing.short_description.truncate(150)
             end
             fix.save!
           end
