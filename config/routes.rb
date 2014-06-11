@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'sign_up', to: 'sign_up#create'
   get '/fix', to: 'guesses#fix'  
   get '/admin', to: 'admin#main'
-  
+  get '/awards', to: 'user_award#index'
   get 'guesses/error' => 'guesses#error', as: :error
 
   
