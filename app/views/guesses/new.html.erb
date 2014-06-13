@@ -1,13 +1,4 @@
 <% title 'How Much Is That House?' %>
-<script>
-  $(document).on("click", ".card-container", function(e){
-    e.stopImmediatePropagation();  
-    $(this).flip();
-  });
-  $(document).on("click", ".btn", function(e){
-    $(this).click();
-  });
-</script>
 
 <div class="card-container">
   <div class="card">
@@ -27,7 +18,7 @@
           <p>Receptions: <%= @listing.num_recepts %></p>
           <p>Street: <%= @listing.street_name %></p>
           <div>
-            <p>Short Description:<br/></p><p class="normal"><%= @listing.short_description %></p>
+            <p>Short Description:<br/></p><p class="normal"><%= @listing.short_description.truncate(230) %></p>
           </div>
       </div>
   </div>

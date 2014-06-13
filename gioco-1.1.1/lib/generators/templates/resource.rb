@@ -1,8 +1,3 @@
-class User < ActiveRecord::Base
-has_many :points  
-has_many :badges , :through => :levels 
-has_many :levels  
-
 def change_points(options)
   if Gioco::Core::KINDS
     points = options[:points]
@@ -42,14 +37,4 @@ def next_badge?(kind_id = false)
                         :percentage => percentage
                       }
   end
-end
-  has_secure_password
-
-  has_many :guesses
-  has_many :user_awards
-  
-  before_save { |user| user.email = email.downcase }
-
-  validates :email, uniqueness: true, length: { maximum: 40 }
-  validates_format_of :email, with: %r{\A[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9.-]+\.)+[A-Za-z]+\z}
 end

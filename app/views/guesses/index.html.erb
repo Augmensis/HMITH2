@@ -1,18 +1,5 @@
 <% title 'Viewed Listings' %>
 
-<script>
-  $(document).on("click", ".card-container", function(e){
-    e.stopImmediatePropagation();  
-    $(this).flip();
-  });
-  $(document).on("click", ".btn", function(e){
-    $(this).click();
-  });
-  $(document).on("click", "p", function(e){
-    $(this).click();
-  });
-</script>
-
 <% unless @guesses.blank? -%>
   <div>
     Number of guesses: <%= @guesses.size %><br />

@@ -69,6 +69,7 @@ table td{
   display: inline-block;
   *display:inline; /* ie7 fix */
   float: none;
+  border: 3px solid indigo;
 }
 .thumbnail img{
   max-width:95%; 

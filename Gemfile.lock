@@ -45,6 +45,7 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    gioco (1.1.1)
     hashie (1.0.0)
     hike (1.2.3)
     i18n (0.6.9)
@@ -146,6 +147,7 @@ DEPENDENCIES
   fabrication
   ffaker
   figaro
+  gioco
   jquery-rails
   minitest-rails
   pg
