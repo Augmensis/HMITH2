@@ -73,7 +73,7 @@ table td{
 }
 .thumbnail img{
   max-width:95%; 
-  max-height:255px;
+  max-height:55%;
   padding-top: 0.5em;
 }
 .max {

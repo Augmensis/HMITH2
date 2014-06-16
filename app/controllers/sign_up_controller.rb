@@ -8,6 +8,7 @@ class SignUpController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      Badge.find(1).add(@user)
       redirect_to(root_url, notice: 'You successfully signed up.')
     else
       render action: :new

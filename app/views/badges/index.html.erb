@@ -1,0 +1,13 @@
+<% unless @badges.blank? -%>
+  
+<% @badges.each do |badge| -%>
+    <p><%= image_tag(badge.image_url, :alt => "Bage image not created yet :(") -%></p>
+    <p><%= badge.name %>: <%= badge.points -%></p>
+    <p><%= badge.description -%></p>
+
+  <% end -%>
+
+<% else  -%>
+  <p>You have no badges yet :(</p>
+  <p>Look at more properties, perhaps?</p>
+<% end -%>
