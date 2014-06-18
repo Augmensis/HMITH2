@@ -1,6 +1,6 @@
   $(document).on("ready click", ".card-container", function(e){ 
     $(this).flip();
   });
-  $(document).on("click", ".btn,p", function(e){ 
+  $(document).on("click", ".btn,a", function(e){ 
     e.stopPropagation();
   });
