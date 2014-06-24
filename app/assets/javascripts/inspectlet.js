@@ -1,4 +1,3 @@
-<script type="text/javascript" id="inspectletjs">
 	window.__insp = window.__insp || [];
 	__insp.push(['wid', 1605134423]);
 	(function() {
@@ -9,4 +8,3 @@
 			window.addEventListener('load', __ldinsp, false);
 		}
 	})();
-</script>
