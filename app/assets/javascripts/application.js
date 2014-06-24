@@ -12,6 +12,7 @@
 //
 //= require flipcard
 //= require flipcontroller
+//= require inspectlet
 //= require jquery_ujs
 //= require bootstrap
 

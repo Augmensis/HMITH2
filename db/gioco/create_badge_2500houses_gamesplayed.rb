@@ -5,4 +5,4 @@ badge = Badge.create({
                       :kind_id  => kind.id,
                       :default => 'false'
                     })
-puts '> Badge successfully created'
+puts "> #{badge.name} badge successfully created"
